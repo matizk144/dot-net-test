@@ -9,10 +9,11 @@ using ShapeTest.DataAccess.EventArgs;
 using ShapeTest.DataAccess.Interfaces;
 using ShapeTest.DataAccess.Repositories;
 using ShapeTests.ViewModel.ViewModels;
+using ShapeTests.ViewModel.ViewModels.Shapes;
 
 namespace ShapeTests.ViewModel
 {
-    public class ShapesViewModel : ViewModel
+    public class ShapesViewModel : ViewModels.ViewModel
     {
         private readonly ITrianglesRepository _TrianglesRepo;
         private readonly IComputeAreaService _ComputeAreaService;

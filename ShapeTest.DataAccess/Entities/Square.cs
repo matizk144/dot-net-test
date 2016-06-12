@@ -2,16 +2,9 @@
 
 namespace ShapeTest.DataAccess.Entities
 {
-    public class Square : BaseEntity
+    public class Square : BaseShape
     {
-        private string _name;
         private double _side;
-
-        public string Name
-        {
-            get { return _name; }
-            set { SetAndRaiseIfChanged(ref _name, value); }
-        }
 
         public double Side
         {

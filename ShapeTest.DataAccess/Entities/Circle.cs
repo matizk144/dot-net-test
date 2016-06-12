@@ -2,16 +2,9 @@
 
 namespace ShapeTest.DataAccess.Entities
 {
-    public class Circle : BaseEntity
+    public class Circle : BaseShape
     {
-        private string _name;
         private double _radius;
-
-        public string Name
-        {
-            get { return _name; }
-            set { SetAndRaiseIfChanged(ref _name, value); }
-        }
 
         public double Radius
         {

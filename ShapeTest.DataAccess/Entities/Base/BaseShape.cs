@@ -3,8 +3,16 @@ using ShapeTest.DataAccess.EventHandlers;
 
 namespace ShapeTest.DataAccess.Entities.Base
 {
-    public abstract class BaseEntity
+    public abstract class BaseShape
     {
+        private string _name;
+
+        public string Name
+        {
+            get { return _name; }
+            set { SetAndRaiseIfChanged(ref _name, value); }
+        }
+
         public event EntityChangedEventHandler EntityChanged;
 
         public void SetAndRaiseIfChanged<T>(ref T backingField, T newValue)

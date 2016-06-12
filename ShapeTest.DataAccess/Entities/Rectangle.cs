@@ -2,17 +2,10 @@
 
 namespace ShapeTest.DataAccess.Entities
 {
-    public class Rectangle : BaseEntity
+    public class Rectangle : BaseShape
     {
-        private string _name;
         private double _length;
         private double _weight;
-
-        public string Name
-        {
-            get { return _name; }
-            set { SetAndRaiseIfChanged(ref _name, value); }
-        }
 
         public double Length
         {

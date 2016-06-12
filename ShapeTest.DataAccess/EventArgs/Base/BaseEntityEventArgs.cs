@@ -2,7 +2,7 @@
 
 namespace ShapeTest.DataAccess.EventArgs.Base
 {
-    public abstract class BaseEntityEventArgs<TEntity> : System.EventArgs where TEntity : BaseEntity
+    public abstract class BaseEntityEventArgs<TEntity> : System.EventArgs where TEntity : BaseShape
     {
         private readonly TEntity _entity;
 

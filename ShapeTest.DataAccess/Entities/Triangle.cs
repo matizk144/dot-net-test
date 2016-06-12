@@ -4,17 +4,10 @@ using ShapeTest.DataAccess.Entities.Base;
 
 namespace ShapeTest.DataAccess.Entities
 {
-    public class Triangle : BaseEntity
+    public class Triangle : BaseShape
     {
-        private string _name;
         private double _base;
         private double _height;
-
-        public string Name
-        {
-            get { return _name; }
-            set { SetAndRaiseIfChanged(ref _name, value); }
-        }
 
         public double Base
         {

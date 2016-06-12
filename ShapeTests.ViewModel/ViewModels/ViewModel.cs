@@ -2,9 +2,9 @@
 using System.Runtime.CompilerServices;
 using MvvmCross.Core.ViewModels;
 
-namespace ShapeTests.ViewModel
+namespace ShapeTests.ViewModel.ViewModels
 {
-    public class ViewModel : MvxViewModel
+    public abstract class ViewModel : MvxViewModel
     {
         public void SetAndRaisePropertyChanged<T>(ref T backingField, T newValue, [CallerMemberName] string memberName = "")
         {

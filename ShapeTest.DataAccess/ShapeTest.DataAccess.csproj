@@ -39,7 +39,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Base\BaseEntity.cs" />
+    <Compile Include="Entities\Base\BaseShape.cs" />
     <Compile Include="Entities\Circle.cs" />
     <Compile Include="EventArgs\Base\BaseEntityEventArgs.cs" />
     <Compile Include="EventArgs\CircleEventArgs.cs" />

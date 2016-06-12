@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShapeTest.DataAccess.Entities;
 using ShapeTests.ViewModel.ViewModels;
+using ShapeTests.ViewModel.ViewModels.Shapes;
 
 namespace ShapeTest.ViewModel.UnitTests
 {

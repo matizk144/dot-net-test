@@ -3,7 +3,7 @@ using ShapeTest.DataAccess.Entities.Base;
 
 namespace ShapeTest.DataAccess.Repositories.BaseRepository
 {
-    public abstract class BaseRepository<TEntity> where TEntity : BaseEntity
+    public abstract class BaseRepository<TEntity> where TEntity : BaseShape
     {
         protected List<TEntity> Entities;
 
