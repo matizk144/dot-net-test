@@ -2,10 +2,10 @@
 
 namespace ShapeTest.DataAccess.Entities
 {
-    public class Circle : BaseEntity
+    public class Square : BaseEntity
     {
         private string _name;
-        private double _radius;
+        private double _side;
 
         public string Name
         {
@@ -13,10 +13,10 @@ namespace ShapeTest.DataAccess.Entities
             set { SetAndRaiseIfChanged(ref _name, value); }
         }
 
-        public double Radius
+        public double Side
         {
-            get { return _radius; }
-            set { SetAndRaiseIfChanged(ref _radius, value); }
+            get { return _side; }
+            set { SetAndRaiseIfChanged(ref _side, value); }
         }
     }
 }

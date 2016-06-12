@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ShapeTest.DataAccess.Entities;
+using ShapeTest.DataAccess.EventHandlers;
 
 namespace ShapeTest.DataAccess.Repositories
 {
