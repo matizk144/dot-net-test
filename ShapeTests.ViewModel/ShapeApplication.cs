@@ -18,6 +18,7 @@ namespace ShapeTests.ViewModel
         {
             RepositoryInitializer.InitRepository();
             Mvx.RegisterType<IComputeAreaService, ComputeAreaService>();
+            Mvx.RegisterType<IShapesCreator, ShapesCreator>();
             Mvx.RegisterType<ISubmissionService, SubmissionService>();
         }
     }

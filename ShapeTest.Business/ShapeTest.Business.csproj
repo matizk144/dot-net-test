@@ -43,9 +43,12 @@
     <Compile Include="Calculators\RectangleCalculator.cs" />
     <Compile Include="Calculators\SquareCalculator.cs" />
     <Compile Include="Calculators\TriangleCalculator.cs" />
+    <Compile Include="Enums\ShapeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ComputeAreaService.cs" />
     <Compile Include="Services\IComputeAreaService.cs" />
+    <Compile Include="Services\IShapesCreator.cs" />
+    <Compile Include="Services\ShapesCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SubmissionService">

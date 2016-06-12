@@ -86,14 +86,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\PopupWindowControl.cs" />
+    <Compile Include="Converters\EnumBooleanConverter.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Popup\PopupWindow.xaml.cs">
       <DependentUpon>PopupWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Setup.cs" />
     <Compile Include="ShapeTestPresenter.cs" />
-    <Compile Include="Views\AddTriangleView.xaml.cs">
-      <DependentUpon>AddTriangleView.xaml</DependentUpon>
+    <Compile Include="Views\AddShapeView.xaml.cs">
+      <DependentUpon>AddShapeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShapesView.xaml.cs">
       <DependentUpon>ShapesView.xaml</DependentUpon>
@@ -114,7 +115,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddTriangleView.xaml">
+    <Page Include="Views\AddShapeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
