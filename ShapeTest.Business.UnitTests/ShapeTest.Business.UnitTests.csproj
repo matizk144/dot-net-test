@@ -79,6 +79,10 @@
       <Project>{432c0100-85d2-414c-9c2c-51d814768db5}</Project>
       <Name>ShapeTest.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShapeTest.DataAccess\ShapeTest.DataAccess.csproj">
+      <Project>{99306F65-B038-4FE4-A169-7545E82B2CCD}</Project>
+      <Name>ShapeTest.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

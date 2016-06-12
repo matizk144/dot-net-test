@@ -1,0 +1,64 @@
+/UI/GuiMain/bin
+/UI/GuiMain/obj
+/DataAccess/DataAccess/obj
+/DataAccess/DataAccess.Contracts/obj
+/DataAccess/DataAccess.Model/obj
+/BusinessLogic/BusinessLogic/obj
+/BusinessLogic/BusinessLogic/bin
+/DataAccess/DataAccess/bin
+/DataAccess/DataAccess.Contracts/bin
+/DataAccess/DataAccess.Model/bin
+!/Project/NMB.Lib/Helpers
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+.cvsignore
+
+# NuGet Packages
+packages/*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+CVS/
+
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# JustCode
+.JustCode
+/TestResults
+/Installer/InstallShield/InstallShield/Express
+
+# JustTrace
+AMPEurotax.jtconfig
+/Project/NMB.WindowsPhone/Assets
+/Project/NMB.Lib/Localization
+/Project/NMB.WindowsPhone/Localization
+/Project/packages
+/Project/NMB.WindowsPhone/Assets
+/Project/NMB.WindowsPhone/CryptoObfuscator_Output
+/Project/NMB.WindowsPhone/*.map
+/Project/NMB.WindowsPhone/Style/styles.xaml
+/project/nmb.windowsphone/Properties/WMAppManifest.xml
+/project/nmb.windowsphone/Properties/AssemblyInfo.cs
+/Project/NMB.WindowsPhone/Properties/WMAppManifest.xml
+/Project/NMB.WindowsPhone/Properties/AssemblyInfo.cs
+
+*/UpgradeLog.htm
+/Project/NMB.WindowsPhone/Assets/bankAccessPairing_cz.png
+/Project/NMB.WindowsPhone/Assets/bankAccessPairing_sk.png
+*.DotSettings
+/Project/NMB.WindowsPhone.ScheduledAgent/Assets/topBar.png
+/Project/NMB.WindowsPhone/Toolkit.Content/ApplicationBar.AddressBook.png
+/~$apeTest.docx

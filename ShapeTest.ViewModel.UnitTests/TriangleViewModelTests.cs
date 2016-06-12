@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ShapeTest.Business.Entities;
+using ShapeTest.DataAccess.Entities;
 using ShapeTests.ViewModel.ViewModels;
 
 namespace ShapeTest.ViewModel.UnitTests

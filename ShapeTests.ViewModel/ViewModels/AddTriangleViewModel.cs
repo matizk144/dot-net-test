@@ -1,10 +1,9 @@
 ﻿using MvvmCross.Core.ViewModels;
+using ShapeTest.DataAccess.Entities;
+using ShapeTest.DataAccess.Repositories;
 
 namespace ShapeTests.ViewModel.ViewModels
 {
-    using ShapeTest.Business.Entities;
-    using ShapeTest.Business.Repositories;
-
     public class AddTriangleViewModel : ViewModel, IPopupViewModel
     {
         private readonly ITrianglesRepository _TriangleRepo;

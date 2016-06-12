@@ -108,6 +108,10 @@
       <Project>{432C0100-85D2-414C-9C2C-51D814768DB5}</Project>
       <Name>ShapeTest.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShapeTest.DataAccess\ShapeTest.DataAccess.csproj">
+      <Project>{99306F65-B038-4FE4-A169-7545E82B2CCD}</Project>
+      <Name>ShapeTest.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShapeTests.ViewModel\ShapeTests.ViewModel.csproj">
       <Project>{fc008b42-d59a-41b6-b57a-49eeaf1cc017}</Project>
       <Name>ShapeTests.ViewModel</Name>

@@ -1,10 +1,9 @@
 ﻿using System;
+using ShapeTest.DataAccess.Entities;
+using System.ComponentModel;
 
 namespace ShapeTests.ViewModel.ViewModels
 {
-    using System.ComponentModel;
-
-    using ShapeTest.Business.Entities;
 
     public class TriangleViewModel : ViewModel
     {

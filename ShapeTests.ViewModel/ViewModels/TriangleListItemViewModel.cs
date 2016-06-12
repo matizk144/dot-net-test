@@ -1,5 +1,5 @@
 ﻿using System;
-using ShapeTest.Business.Entities;
+using ShapeTest.DataAccess.Entities;
 
 namespace ShapeTests.ViewModel.ViewModels
 {

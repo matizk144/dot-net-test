@@ -2,9 +2,9 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using ShapeTest.Business.Entities;
-using ShapeTest.Business.Repositories;
 using ShapeTest.Business.Services;
+using ShapeTest.DataAccess.Entities;
+using ShapeTest.DataAccess.Repositories;
 
 namespace ShapeTest.Business.UnitTest
 {

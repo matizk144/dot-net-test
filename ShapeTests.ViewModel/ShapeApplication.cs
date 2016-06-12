@@ -1,9 +1,9 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
+using ShapeTest.DataAccess.Repositories;
 
 namespace ShapeTests.ViewModel
 {
-    using ShapeTest.Business.Repositories;
     using ShapeTest.Business.Services;
 
     public class ShapeApplication : MvxApplication

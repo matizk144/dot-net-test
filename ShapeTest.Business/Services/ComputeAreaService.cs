@@ -1,4 +1,4 @@
-﻿using ShapeTest.Business.Repositories;
+﻿using ShapeTest.DataAccess.Repositories;
 
 namespace ShapeTest.Business.Services
 {

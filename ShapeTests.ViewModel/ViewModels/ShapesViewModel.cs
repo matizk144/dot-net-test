@@ -3,9 +3,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using MvvmCross.Core.ViewModels;
-using ShapeTest.Business.Entities;
-using ShapeTest.Business.Repositories;
 using ShapeTest.Business.Services;
+using ShapeTest.DataAccess.Entities;
+using ShapeTest.DataAccess.Repositories;
 using ShapeTests.ViewModel.ViewModels;
 
 namespace ShapeTests.ViewModel
