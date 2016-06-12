@@ -1,24 +1,27 @@
-﻿using ShapeTest.DataAccess.Interfaces;
-using ShapeTest.DataAccess.Repositories;
+﻿using ShapeTest.Business.Calculators;
+using ShapeTest.DataAccess.Interfaces;
 
 namespace ShapeTest.Business.Services
 {
-    using System.Linq;
-
     public class ComputeAreaService : IComputeAreaService
     {
-        private readonly ITrianglesRepository _TrianglesRepo;
+        private readonly IRepositories _repositories;
 
-        public ComputeAreaService(ITrianglesRepository trianglesRepo)
+
+        public ComputeAreaService(IRepositories repositories)
         {
-            _TrianglesRepo = trianglesRepo;
+            _repositories = repositories;
         }
 
         public double ComputeTotalArea()
         {
-            var triangles = _TrianglesRepo.GetAll();
+            double totalComputedArea = 0;
+            totalComputedArea += new CircleCalculator(_repositories.Circles).GetSumCalculatedAreas();
+            totalComputedArea += new RectangleCalculator(_repositories.Rectangles).GetSumCalculatedAreas();
+            totalComputedArea += new SquareCalculator(_repositories.Squares).GetSumCalculatedAreas();
+            totalComputedArea += new TriangleCalculator(_repositories.Triangles).GetSumCalculatedAreas();
 
-            return triangles.Sum(triangle => 0.5 * triangle.Base * triangle.Height);
+            return totalComputedArea;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ShapeTests.ViewModel
 
         public override void Initialize()
         {
-            Mvx.LazyConstructAndRegisterSingleton<ITrianglesRepository>(() => new TrianglesRepository());
+            RepositoryInitializer.InitRepository();
             Mvx.RegisterType<IComputeAreaService, ComputeAreaService>();
             Mvx.RegisterType<ISubmissionService, SubmissionService>();
         }

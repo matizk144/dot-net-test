@@ -39,6 +39,10 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculators\CircleCalculator.cs" />
+    <Compile Include="Calculators\RectangleCalculator.cs" />
+    <Compile Include="Calculators\SquareCalculator.cs" />
+    <Compile Include="Calculators\TriangleCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ComputeAreaService.cs" />
     <Compile Include="Services\IComputeAreaService.cs" />

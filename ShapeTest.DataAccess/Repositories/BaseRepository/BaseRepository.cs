@@ -7,6 +7,11 @@ namespace ShapeTest.DataAccess.Repositories.BaseRepository
     {
         protected List<TEntity> Entities;
 
+        protected BaseRepository()
+        {
+            Entities = new List<TEntity>();
+        }
+
         public List<TEntity> GetAll()
         {
             return Entities;
