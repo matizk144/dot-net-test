@@ -62,6 +62,9 @@ namespace ShapeTests.ViewModel.ViewModels.Shapes.Base
             UpdateViewModel();
         }
 
-        protected abstract void UpdateViewModel();
+        protected virtual void UpdateViewModel()
+        {
+            Name = Shape.Name;
+        }
     }
 }

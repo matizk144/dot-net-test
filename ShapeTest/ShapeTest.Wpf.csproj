@@ -153,6 +153,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ShapeTest.DataAccess\ShapeTest.DataAccess.csproj">
+      <Project>{99306f65-b038-4fe4-a169-7545e82b2ccd}</Project>
+      <Name>ShapeTest.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShapeTests.ViewModel\ShapeTests.ViewModel.csproj">
       <Project>{fc008b42-d59a-41b6-b57a-49eeaf1cc017}</Project>
       <Name>ShapeTests.ViewModel</Name>

@@ -164,7 +164,7 @@ namespace ShapeTests.ViewModel
             {
                 TriangleViewModel contentViewModel = new TriangleViewModel
                 {
-                    Triangle = _SelectedTriangleListItemViewModel.Triangle
+                    Shape = _SelectedTriangleListItemViewModel.Triangle
                 };
                 SelectedTriangleContentViewModel = contentViewModel;
             }
