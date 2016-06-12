@@ -49,11 +49,17 @@
     <Compile Include="Entities\Rectangle.cs" />
     <Compile Include="Entities\Square.cs" />
     <Compile Include="Entities\Triangle.cs" />
+    <Compile Include="Interfaces\ICirclesRepository.cs" />
+    <Compile Include="Interfaces\IRectanglesRepository.cs" />
+    <Compile Include="Interfaces\ISquaresRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EventArgs\TriangleEventArgs.cs" />
     <Compile Include="EventHandlers\TriangleRemovedEventHandler.cs" />
     <Compile Include="Interfaces\ITrianglesRepository.cs" />
     <Compile Include="Repositories\BaseRepository\BaseRepository.cs" />
+    <Compile Include="Repositories\CirclesRepository.cs" />
+    <Compile Include="Repositories\RectanglesRepository.cs" />
+    <Compile Include="Repositories\SquaresRepository.cs" />
     <Compile Include="Repositories\TrianglesRepository.cs" />
   </ItemGroup>
   <ItemGroup />
