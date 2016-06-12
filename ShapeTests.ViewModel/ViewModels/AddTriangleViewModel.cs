@@ -1,5 +1,6 @@
 ﻿using MvvmCross.Core.ViewModels;
 using ShapeTest.DataAccess.Entities;
+using ShapeTest.DataAccess.Interfaces;
 using ShapeTest.DataAccess.Repositories;
 
 namespace ShapeTests.ViewModel.ViewModels

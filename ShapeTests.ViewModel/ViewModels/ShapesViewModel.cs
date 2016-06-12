@@ -5,6 +5,8 @@ using System.Linq;
 using MvvmCross.Core.ViewModels;
 using ShapeTest.Business.Services;
 using ShapeTest.DataAccess.Entities;
+using ShapeTest.DataAccess.EventArgs;
+using ShapeTest.DataAccess.Interfaces;
 using ShapeTest.DataAccess.Repositories;
 using ShapeTests.ViewModel.ViewModels;
 
@@ -119,7 +121,7 @@ namespace ShapeTests.ViewModel
 
         public void OnTriangleAdded(object sender, TriangleEventArgs args)
         {
-            TriangleListItemViewModel viewModel = new TriangleListItemViewModel { Triangle = args.Triangle };
+            TriangleListItemViewModel viewModel = new TriangleListItemViewModel { Triangle = args.Entity };
             TriangleListItems.Add(viewModel);
         }
 

@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ShapeTest.DataAccess.Entities;
+using ShapeTest.DataAccess.EventArgs;
 using ShapeTest.DataAccess.EventHandlers;
 
-namespace ShapeTest.DataAccess.Repositories
+namespace ShapeTest.DataAccess.Interfaces
 {
     public interface ITrianglesRepository
     {
-        event TriangleAddedEventHandler TriangleAdded;
+        event EventHandler<TriangleEventArgs> TriangleAdded;
 
         List<Triangle> GetTriangles();
 

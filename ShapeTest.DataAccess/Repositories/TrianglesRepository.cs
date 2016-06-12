@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ShapeTest.DataAccess.Entities;
-using ShapeTest.DataAccess.EventHandlers;
+using ShapeTest.DataAccess.EventArgs;
+using ShapeTest.DataAccess.Interfaces;
 
 namespace ShapeTest.DataAccess.Repositories
 {
@@ -38,7 +40,7 @@ namespace ShapeTest.DataAccess.Repositories
             };
         }
 
-        public event TriangleAddedEventHandler TriangleAdded;
+        public event EventHandler<TriangleEventArgs> TriangleAdded;
 
         public List<Triangle> GetTriangles()
         {
@@ -58,8 +60,7 @@ namespace ShapeTest.DataAccess.Repositories
 
         protected void OnTriangleAdded(Triangle triangle)
         {
-            TriangleAddedEventHandler handler = TriangleAdded;
-            handler?.Invoke(this, new TriangleEventArgs(triangle));
+            TriangleAdded?.Invoke(this, new TriangleEventArgs(triangle));
         }
     }
 }

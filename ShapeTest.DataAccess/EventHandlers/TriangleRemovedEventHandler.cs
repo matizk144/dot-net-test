@@ -1,4 +1,5 @@
-﻿using ShapeTest.DataAccess.Repositories;
+﻿using ShapeTest.DataAccess.EventArgs;
+using ShapeTest.DataAccess.Repositories;
 
 namespace ShapeTest.DataAccess.EventHandlers
 {

@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ShapeTest.Business.Services;
 using ShapeTest.DataAccess.Entities;
+using ShapeTest.DataAccess.Interfaces;
 using ShapeTest.DataAccess.Repositories;
 
 namespace ShapeTest.Business.UnitTest

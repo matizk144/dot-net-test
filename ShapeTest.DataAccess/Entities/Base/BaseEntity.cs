@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ShapeTest.DataAccess.EventHandlers;
 
 namespace ShapeTest.DataAccess.Entities.Base
 {
@@ -19,7 +19,7 @@ namespace ShapeTest.DataAccess.Entities.Base
         private void OnEntityChanged()
         {
             EntityChangedEventHandler handler = EntityChanged;
-            handler?.Invoke(this, EventArgs.Empty);
+            handler?.Invoke(this, System.EventArgs.Empty);
         }
     }
 }
