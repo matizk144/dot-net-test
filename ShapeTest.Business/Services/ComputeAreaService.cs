@@ -16,7 +16,7 @@ namespace ShapeTest.Business.Services
 
         public double ComputeTotalArea()
         {
-            var triangles = _TrianglesRepo.GetTriangles();
+            var triangles = _TrianglesRepo.GetAll();
 
             return triangles.Sum(triangle => 0.5 * triangle.Base * triangle.Height);
         }

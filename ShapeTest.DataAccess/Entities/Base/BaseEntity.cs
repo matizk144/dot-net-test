@@ -3,7 +3,7 @@ using ShapeTest.DataAccess.EventHandlers;
 
 namespace ShapeTest.DataAccess.Entities.Base
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public event EntityChangedEventHandler EntityChanged;
 

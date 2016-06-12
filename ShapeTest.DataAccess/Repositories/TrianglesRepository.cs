@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using ShapeTest.DataAccess.Entities;
 using ShapeTest.DataAccess.EventArgs;
 using ShapeTest.DataAccess.Interfaces;
+using ShapeTest.DataAccess.Repositories.BaseRepository;
 
 namespace ShapeTest.DataAccess.Repositories
 {
-    public class TrianglesRepository : ITrianglesRepository
+    public class TrianglesRepository : BaseRepository<Triangle>, ITrianglesRepository
     {
-        private List<Triangle> _triangles; 
 
         public TrianglesRepository()
         {
@@ -17,7 +17,7 @@ namespace ShapeTest.DataAccess.Repositories
 
         private void InitRepository()
         {
-            _triangles = new List<Triangle>
+            Entities = new List<Triangle>
             {
                 new Triangle
                 {
@@ -42,25 +42,14 @@ namespace ShapeTest.DataAccess.Repositories
 
         public event EventHandler<TriangleEventArgs> TriangleAdded;
 
-        public List<Triangle> GetTriangles()
+        protected override bool OnEntityRemoved(Triangle entity, bool isRemoved)
         {
-            return _triangles;
+            throw new NotImplementedException();
         }
 
-        public void AddTriangle(Triangle triangle)
+        protected override void OnEntityAdded(Triangle entity)
         {
-            _triangles.Add(triangle);
-            OnTriangleAdded(triangle);
-        }
-
-        public bool RemoveTriangle(Triangle triangle)
-        {
-            return _triangles.Remove(triangle);
-        }
-
-        protected void OnTriangleAdded(Triangle triangle)
-        {
-            TriangleAdded?.Invoke(this, new TriangleEventArgs(triangle));
+            TriangleAdded?.Invoke(this, new TriangleEventArgs(entity));
         }
     }
 }

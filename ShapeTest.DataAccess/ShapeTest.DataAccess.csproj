@@ -53,8 +53,10 @@
     <Compile Include="EventArgs\TriangleEventArgs.cs" />
     <Compile Include="EventHandlers\TriangleRemovedEventHandler.cs" />
     <Compile Include="Interfaces\ITrianglesRepository.cs" />
+    <Compile Include="Repositories\BaseRepository\BaseRepository.cs" />
     <Compile Include="Repositories\TrianglesRepository.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -107,7 +107,7 @@ namespace ShapeTests.ViewModel
 
         public override void Start()
         {
-           List<Triangle> triangles = _TrianglesRepo.GetTriangles();
+           List<Triangle> triangles = _TrianglesRepo.GetAll();
            TriangleListItems = CreateListViewModelsFromTriangeList(triangles);
            SelectedTriangleListItemViewModel = TriangleListItems.FirstOrDefault();
 
@@ -131,7 +131,7 @@ namespace ShapeTests.ViewModel
             {
                 var viewModelToDelete = SelectedTriangleListItemViewModel;
                 SelectedTriangleContentViewModel = null;
-                _TrianglesRepo.RemoveTriangle(viewModelToDelete.Triangle);
+                _TrianglesRepo.Remove(viewModelToDelete.Triangle);
                 TriangleListItems.Remove(viewModelToDelete);
             }
         }

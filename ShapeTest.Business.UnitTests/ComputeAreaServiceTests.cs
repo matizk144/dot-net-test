@@ -44,7 +44,7 @@ namespace ShapeTest.Business.UnitTest
                     }                                   
             };
 
-            _MockTrianglesRepository.Setup(m => m.GetTriangles()).Returns(triangles);
+            _MockTrianglesRepository.Setup(m => m.GetAll()).Returns(triangles);
 
             ComputeAreaService computeAreaService = new ComputeAreaService(_MockTrianglesRepository.Object);
 

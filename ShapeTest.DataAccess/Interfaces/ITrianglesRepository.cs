@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ShapeTest.DataAccess.Entities;
 using ShapeTest.DataAccess.EventArgs;
-using ShapeTest.DataAccess.EventHandlers;
 
 namespace ShapeTest.DataAccess.Interfaces
 {
@@ -10,10 +9,10 @@ namespace ShapeTest.DataAccess.Interfaces
     {
         event EventHandler<TriangleEventArgs> TriangleAdded;
 
-        List<Triangle> GetTriangles();
+        List<Triangle> GetAll();
 
-        void AddTriangle(Triangle triangle);
+        void Add(Triangle triangle);
 
-        bool RemoveTriangle(Triangle triangle);
+        bool Remove(Triangle triangle);
     }
 }
