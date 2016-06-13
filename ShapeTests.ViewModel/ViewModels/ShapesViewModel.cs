@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using MvvmCross.Core.ViewModels;
 using ShapeTest.Business.Services;
 using ShapeTest.DataAccess.Entities;
@@ -17,12 +19,15 @@ namespace ShapeTests.ViewModel
         private readonly IComputeAreaService _computeAreaService;
         private readonly ISubmissionService _submissionService;
         private readonly IShapeRemover _shapeRemover;
+        private readonly IPopupViewModel _popupViewModel;
 
         private ObservableCollection<IShapeViewModel> _shapeViewModels;
     
         private IShapeViewModel _selectedShapeViewModel;
 
         private double _totalArea;
+        private bool _sendSubmissionEnabled = true;
+        private string _submissionStatus;
 
         private MvxCommand _addShapeCommand;
         private MvxCommand _removeShapeCommand;
@@ -90,6 +95,18 @@ namespace ShapeTests.ViewModel
             set { SetAndRaisePropertyChanged(ref _submitAreaCommand, value); }
         }
 
+        public bool SendSubmissionEnabled
+        {
+            get { return _sendSubmissionEnabled; }
+            set { SetAndRaisePropertyChanged(ref _sendSubmissionEnabled, value); }
+        }
+
+        public string SubmissionStatus
+        {
+            get { return _submissionStatus; }
+            set { SetAndRaisePropertyChanged(ref _submissionStatus, value); }
+        }
+
         public override void Start()
         {
             List<Triangle> triangles = _repositories.Triangles.GetAll();
@@ -138,18 +155,22 @@ namespace ShapeTests.ViewModel
 
         public void SubmitArea()
         {
-            _submissionService.SubmitTotalArea(TotalArea);
-        }
-
-        private ObservableCollection<TriangleListItemViewModel> CreateListViewModelsFromTriangeList(List<Triangle> triangles)
-        {
-            ObservableCollection<TriangleListItemViewModel> viewModels = new ObservableCollection<TriangleListItemViewModel>();
-            foreach (var triangle in triangles)
+            var submitTask = new Task(() =>
             {
-                TriangleListItemViewModel viewModel = new TriangleListItemViewModel { Triangle = triangle };
-                viewModels.Add(viewModel);
-            }
-            return viewModels;
+                SendSubmissionEnabled = false;
+                SubmissionStatus = "Start sending...";
+                try
+                {
+                    _submissionService.SubmitTotalArea(TotalArea);
+                    SubmissionStatus = "Sent";
+                }
+                catch (Exception)
+                {
+                    SubmissionStatus = "Sent error!!!";
+                }
+                SendSubmissionEnabled = true;
+            });
+            submitTask.Start();
         }
     }
 }

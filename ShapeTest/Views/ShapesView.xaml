@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -63,8 +64,10 @@
                 <TextBlock VerticalAlignment="Center" Text="Total Area:"/>
                 <TextBlock VerticalAlignment="Center" Text="{Binding TotalArea}"></TextBlock>
             </StackPanel>
-            <Button Grid.Column="2" Content="Submit Total Area" Command="{Binding SubmitAreaCommand}"/>
+            <Button Grid.Column="2" Content="Submit Total Area" Command="{Binding SubmitAreaCommand}" IsEnabled="{Binding SendSubmissionEnabled}"/>
         </Grid>
-        
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <TextBlock Text="{Binding SubmissionStatus}" />
+        </Grid>
     </Grid>
 </views:MvxWpfView>
