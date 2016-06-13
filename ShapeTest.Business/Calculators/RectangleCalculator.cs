@@ -20,7 +20,7 @@ namespace ShapeTest.Business.Calculators
 
         private double GetRectangleArea(Rectangle rectangle)
         {
-            return rectangle.Length * rectangle.Weight;
+            return rectangle.Length * rectangle.Width;
         }
     }
 }

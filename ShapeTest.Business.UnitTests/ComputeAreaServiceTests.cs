@@ -77,12 +77,12 @@ namespace ShapeTest.Business.UnitTests
                 new Rectangle()
                 {
                     Length = 3,
-                    Weight = 7
+                    Width = 7
                 },
                 new Rectangle
                 {
                     Length = 4,
-                    Weight = 9
+                    Width = 9
                 }
             };
         }

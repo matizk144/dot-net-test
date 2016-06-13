@@ -5,7 +5,7 @@ namespace ShapeTest.DataAccess.Entities
     public class Rectangle : BaseShape
     {
         private double _length;
-        private double _weight;
+        private double _width;
 
         public double Length
         {
@@ -13,10 +13,10 @@ namespace ShapeTest.DataAccess.Entities
             set { SetAndRaiseIfChanged(ref _length, value); }
         }
 
-        public double Weight
+        public double Width
         {
-            get { return _weight; }
-            set { SetAndRaiseIfChanged(ref _weight, value); }
+            get { return _width; }
+            set { SetAndRaiseIfChanged(ref _width, value); }
         }
     }
 }
