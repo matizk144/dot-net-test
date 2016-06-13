@@ -8,9 +8,9 @@ namespace ShapeTest.DataAccess.Repositories
 {
     public class CirclesRepository : BaseRepository<Circle>, ICirclesRepository
     {
-        protected override bool OnEntityRemoved(Circle entity, bool isRemoved)
+        protected override void OnEntityRemoved(Circle entity)
         {
-            throw new NotImplementedException();
+            CircleRemoved?.Invoke(this, new CircleEventArgs(entity));
         }
 
         protected override void OnEntityAdded(Circle entity)
@@ -19,5 +19,6 @@ namespace ShapeTest.DataAccess.Repositories
         }
 
         public event EventHandler<CircleEventArgs> CircleAdded;
+        public event EventHandler<CircleEventArgs> CircleRemoved;
     }
 }

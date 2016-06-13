@@ -8,11 +8,12 @@ namespace ShapeTest.DataAccess.Interfaces
     public interface ISquaresRepository
     {
         event EventHandler<SquareEventArgs> SquareAdded;
+        event EventHandler<SquareEventArgs> SquareRemoved;
 
         List<Square> GetAll();
 
         void Add(Square square);
 
-        bool Remove(Square square);
+        void Remove(Square square);
     }
 }

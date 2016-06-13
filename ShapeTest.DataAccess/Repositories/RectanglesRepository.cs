@@ -8,9 +8,9 @@ namespace ShapeTest.DataAccess.Repositories
 {
     public class RectanglesRepository : BaseRepository<Rectangle>, IRectanglesRepository
     {
-        protected override bool OnEntityRemoved(Rectangle entity, bool isRemoved)
+        protected override void OnEntityRemoved(Rectangle entity)
         {
-            throw new NotImplementedException();
+            RectangleRemoved?.Invoke(this, new RectangleEventArgs(entity));
         }
 
         protected override void OnEntityAdded(Rectangle entity)
@@ -19,5 +19,6 @@ namespace ShapeTest.DataAccess.Repositories
         }
 
         public event EventHandler<RectangleEventArgs> RectangleAdded;
+        public event EventHandler<RectangleEventArgs> RectangleRemoved;
     }
 }

@@ -36,11 +36,15 @@ namespace ShapeTests.ViewModel.ViewModels.Shapes
             }
         }
 
-        protected override void UpdateViewModel()
+        public override void UpdateViewModel()
         {
             base.UpdateViewModel();
             Base = Shape.Base;
             Height = Shape.Height;
+        }
+
+        public TriangleViewModel(Triangle shape) : base(shape)
+        {
         }
     }
 }

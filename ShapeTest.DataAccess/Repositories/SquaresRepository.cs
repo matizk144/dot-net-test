@@ -8,9 +8,9 @@ namespace ShapeTest.DataAccess.Repositories
 {
     public class SquaresRepository : BaseRepository<Square>, ISquaresRepository
     {
-        protected override bool OnEntityRemoved(Square entity, bool isRemoved)
+        protected override void OnEntityRemoved(Square entity)
         {
-            throw new NotImplementedException();
+            SquareRemoved?.Invoke(this, new SquareEventArgs(entity));
         }
 
         protected override void OnEntityAdded(Square entity)
@@ -19,5 +19,6 @@ namespace ShapeTest.DataAccess.Repositories
         }
 
         public event EventHandler<SquareEventArgs> SquareAdded;
+        public event EventHandler<SquareEventArgs> SquareRemoved;
     }
 }

@@ -41,10 +41,12 @@
   <ItemGroup>
     <Compile Include="ShapeApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShapesViewModelCreator.cs" />
     <Compile Include="ViewModels\AddShapeViewModel.cs" />
     <Compile Include="ViewModels\IPopupViewModel.cs" />
     <Compile Include="ViewModels\ShapesViewModel.cs" />
     <Compile Include="ViewModels\Shapes\Base\BaseShapeViewModel.cs" />
+    <Compile Include="ViewModels\Shapes\Base\IShapeViewModel.cs" />
     <Compile Include="ViewModels\Shapes\CircleViewModel.cs" />
     <Compile Include="ViewModels\Shapes\RectangleViewModel.cs" />
     <Compile Include="ViewModels\Shapes\SquareViewModel.cs" />

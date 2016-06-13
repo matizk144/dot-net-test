@@ -41,10 +41,11 @@ namespace ShapeTest.DataAccess.Repositories
         }
 
         public event EventHandler<TriangleEventArgs> TriangleAdded;
+        public event EventHandler<TriangleEventArgs> TriangleRemoved;
 
-        protected override bool OnEntityRemoved(Triangle entity, bool isRemoved)
+        protected override void OnEntityRemoved(Triangle entity)
         {
-            throw new NotImplementedException();
+            TriangleRemoved?.Invoke(this, new TriangleEventArgs(entity));
         }
 
         protected override void OnEntityAdded(Triangle entity)

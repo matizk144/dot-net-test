@@ -19,10 +19,9 @@ namespace ShapeTest.ViewModel.UnitTests
 
             Triangle testTriangle = CreateTriangle(expectedName, expectedBase, expectedHeight);
 
-            TriangleViewModel viewModel = new TriangleViewModel();
 
             // Act
-            viewModel.Shape = testTriangle;
+            TriangleViewModel viewModel = new TriangleViewModel(testTriangle);
 
             // Assert
             viewModel.Name.Should().Be(expectedName);
@@ -41,7 +40,7 @@ namespace ShapeTest.ViewModel.UnitTests
 
             Triangle testTriangle = CreateTriangle(oldName, expectedBase, expectedHeight);
 
-            TriangleViewModel viewModel = new TriangleViewModel { Shape = testTriangle };
+            TriangleViewModel viewModel = new TriangleViewModel(testTriangle);
 
             // Act
             viewModel.Name = expectedName;
@@ -67,7 +66,7 @@ namespace ShapeTest.ViewModel.UnitTests
 
             Triangle testTriangle = CreateTriangle(expectedName, oldBase, expectedHeight);
 
-            TriangleViewModel viewModel = new TriangleViewModel { Shape = testTriangle };
+            TriangleViewModel viewModel = new TriangleViewModel(testTriangle);
 
             // Act
             viewModel.Base = expectedBase;
@@ -93,7 +92,7 @@ namespace ShapeTest.ViewModel.UnitTests
 
             Triangle testTriangle = CreateTriangle(expectedName, expectedBase, oldHeight);
 
-            TriangleViewModel viewModel = new TriangleViewModel { Shape = testTriangle };
+            TriangleViewModel viewModel = new TriangleViewModel(testTriangle);
 
             // Act
             viewModel.Height = expectedHeight;

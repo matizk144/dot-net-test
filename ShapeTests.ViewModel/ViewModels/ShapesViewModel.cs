@@ -1,150 +1,144 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using MvvmCross.Core.ViewModels;
 using ShapeTest.Business.Services;
 using ShapeTest.DataAccess.Entities;
-using ShapeTest.DataAccess.EventArgs;
+using ShapeTest.DataAccess.Entities.Base;
+using ShapeTest.DataAccess.EventArgs.Base;
 using ShapeTest.DataAccess.Interfaces;
-using ShapeTest.DataAccess.Repositories;
 using ShapeTests.ViewModel.ViewModels;
-using ShapeTests.ViewModel.ViewModels.Shapes;
+using ShapeTests.ViewModel.ViewModels.Shapes.Base;
 
 namespace ShapeTests.ViewModel
 {
     public class ShapesViewModel : ViewModels.ViewModel
     {
-        private readonly ITrianglesRepository _TrianglesRepo;
-        private readonly IComputeAreaService _ComputeAreaService;
-        private readonly ISubmissionService _SubmissionService;
+        private readonly IComputeAreaService _computeAreaService;
+        private readonly ISubmissionService _submissionService;
+        private readonly IShapeRemover _shapeRemover;
 
-        private ObservableCollection<TriangleListItemViewModel> _TriangleListItems;
+        private ObservableCollection<IShapeViewModel> _shapeViewModels;
+    
+        private IShapeViewModel _selectedShapeViewModel;
 
-        private TriangleListItemViewModel _SelectedTriangleListItemViewModel;
+        private double _totalArea;
 
-        private TriangleViewModel _SelectedTriangleContentViewModel;
+        private MvxCommand _addShapeCommand;
+        private MvxCommand _removeShapeCommand;
+        private MvxCommand _computeAreaCommand;
+        private MvxCommand _submitAreaCommand;
+        private readonly IRepositories _repositories;
 
-        private double _TotalArea;
-
-        private MvxCommand _AddTriangleCommand;
-        private MvxCommand _RemoveTriangleCommand;
-        private MvxCommand _ComputeAreaCommand;
-        private MvxCommand _SubmitAreaCommand;
-
-        public ShapesViewModel(ITrianglesRepository triangleRepo, 
+        public ShapesViewModel(IRepositories repositories, 
                                IComputeAreaService computeAreaService,
-                               ISubmissionService submissionService)
+                               ISubmissionService submissionService,
+                               IShapeRemover shapeRemover)
         {
-            _TrianglesRepo = triangleRepo;
-            _ComputeAreaService = computeAreaService;
-            _SubmissionService = submissionService;
+            _repositories = repositories;
+            _computeAreaService = computeAreaService;
+            _submissionService = submissionService;
+            _shapeRemover = shapeRemover;
 
-            _TriangleListItems = new ObservableCollection<TriangleListItemViewModel>();
+            _shapeViewModels = new ObservableCollection<IShapeViewModel>();
 
-            AddTriangleCommand = new MvxCommand(AddTriangle);
-            RemoveTriangleCommand = new MvxCommand(RemoveSelectedTriangle);
+            AddShapeCommand = new MvxCommand(AddShape);
+            RemoveShapeCommand = new MvxCommand(RemoveSelectedShape);
             ComputeAreaCommand = new MvxCommand(ComputeTotalArea);
             SubmitAreaCommand = new MvxCommand(SubmitArea);
         }
 
-        public ObservableCollection<TriangleListItemViewModel> TriangleListItems
+        public ObservableCollection<IShapeViewModel> ShapeViewModels
         {
-            get { return _TriangleListItems; }
-            set { SetAndRaisePropertyChanged(ref _TriangleListItems, value); }
+            get { return _shapeViewModels; }
+            set { SetAndRaisePropertyChanged(ref _shapeViewModels, value); }
         }
 
-        public TriangleListItemViewModel SelectedTriangleListItemViewModel
+        public IShapeViewModel SelectedShapeViewModel
         {
-            get { return _SelectedTriangleListItemViewModel; }
-            set { SetAndRaisePropertyChanged(ref _SelectedTriangleListItemViewModel, value); }
-        }
-
-        public TriangleViewModel SelectedTriangleContentViewModel
-        {
-            get { return _SelectedTriangleContentViewModel; }
-            set { SetAndRaisePropertyChanged(ref _SelectedTriangleContentViewModel, value); }
+            get { return _selectedShapeViewModel; }
+            set { SetAndRaisePropertyChanged(ref _selectedShapeViewModel, value); }
         }
 
         public double TotalArea
         {
-            get { return _TotalArea; }
-            set { SetAndRaisePropertyChanged(ref _TotalArea, value); }
+            get { return _totalArea; }
+            set { SetAndRaisePropertyChanged(ref _totalArea, value); }
         }
 
-        public MvxCommand AddTriangleCommand
+        public MvxCommand AddShapeCommand
         {
-            get { return _AddTriangleCommand; }
-            set { SetAndRaisePropertyChanged(ref _AddTriangleCommand, value);}
+            get { return _addShapeCommand; }
+            set { SetAndRaisePropertyChanged(ref _addShapeCommand, value);}
         }
 
-        public MvxCommand RemoveTriangleCommand
+        public MvxCommand RemoveShapeCommand
         {
-            get { return _RemoveTriangleCommand; }
-            set { SetAndRaisePropertyChanged(ref _RemoveTriangleCommand, value); }
+            get { return _removeShapeCommand; }
+            set { SetAndRaisePropertyChanged(ref _removeShapeCommand, value); }
         }
 
         public MvxCommand ComputeAreaCommand
         {
-            get { return _ComputeAreaCommand; }
-            set { SetAndRaisePropertyChanged(ref _ComputeAreaCommand, value); }
+            get { return _computeAreaCommand; }
+            set { SetAndRaisePropertyChanged(ref _computeAreaCommand, value); }
         }
 
         public MvxCommand SubmitAreaCommand
         {
-            get { return _SubmitAreaCommand; }
-            set { SetAndRaisePropertyChanged(ref _SubmitAreaCommand, value); }
-        }
-
-        public override void RaisePropertyChanged(PropertyChangedEventArgs changedArgs)
-        {
-            base.RaisePropertyChanged(changedArgs);
-
-            if (changedArgs.PropertyName == nameof(SelectedTriangleListItemViewModel))
-            {
-                UpdateTriangleContent();
-            }
+            get { return _submitAreaCommand; }
+            set { SetAndRaisePropertyChanged(ref _submitAreaCommand, value); }
         }
 
         public override void Start()
         {
-           List<Triangle> triangles = _TrianglesRepo.GetAll();
-           TriangleListItems = CreateListViewModelsFromTriangeList(triangles);
-           SelectedTriangleListItemViewModel = TriangleListItems.FirstOrDefault();
+            List<Triangle> triangles = _repositories.Triangles.GetAll();
+            foreach (Triangle triangle in triangles)
+            {
+                AddShape(triangle);
+            }
 
-            _TrianglesRepo.TriangleAdded += OnTriangleAdded;
+            SelectedShapeViewModel = ShapeViewModels.FirstOrDefault();
+
+            _repositories.ShapeAdded += OnShapeAdded;
         }
 
-        public void AddTriangle()
+        private void AddShape()
         {
             ShowViewModel<AddShapeViewModel>();
         }
 
-        public void OnTriangleAdded(object sender, TriangleEventArgs args)
+        public void OnShapeAdded(object sender, BaseShapeEventArgs args)
         {
-            TriangleListItemViewModel viewModel = new TriangleListItemViewModel { Triangle = args.Entity };
-            TriangleListItems.Add(viewModel);
+            AddShape(args.Entity);
         }
 
-        public void RemoveSelectedTriangle()
+        private void AddShape(BaseShape shape)
         {
-            if (SelectedTriangleListItemViewModel != null)
+            var shapeViewModel = ShapesViewModelCreator.CreateViewModel(shape);
+            ShapeViewModels.Add(shapeViewModel);
+        }
+
+        private void RemoveSelectedShape()
+        {
+            if (SelectedShapeViewModel != null)
             {
-                var viewModelToDelete = SelectedTriangleListItemViewModel;
-                SelectedTriangleContentViewModel = null;
-                _TrianglesRepo.Remove(viewModelToDelete.Triangle);
-                TriangleListItems.Remove(viewModelToDelete);
+                var viewModelToDelete = SelectedShapeViewModel;
+                SelectedShapeViewModel = null;
+
+                _shapeRemover.RemoveShape(viewModelToDelete.BaseShape);
+                ShapeViewModels.Remove(viewModelToDelete);
             }
         }
 
         public void ComputeTotalArea()
         {
-            TotalArea = _ComputeAreaService.ComputeTotalArea();
+            TotalArea = _computeAreaService.ComputeTotalArea();
         }
 
         public void SubmitArea()
         {
-            _SubmissionService.SubmitTotalArea(TotalArea);
+            _submissionService.SubmitTotalArea(TotalArea);
         }
 
         private ObservableCollection<TriangleListItemViewModel> CreateListViewModelsFromTriangeList(List<Triangle> triangles)
@@ -156,22 +150,6 @@ namespace ShapeTests.ViewModel
                 viewModels.Add(viewModel);
             }
             return viewModels;
-        }
-
-        private void UpdateTriangleContent()
-        {
-            if (SelectedTriangleListItemViewModel != null)
-            {
-                TriangleViewModel contentViewModel = new TriangleViewModel
-                {
-                    Shape = _SelectedTriangleListItemViewModel.Triangle
-                };
-                SelectedTriangleContentViewModel = contentViewModel;
-            }
-            else
-            {
-                SelectedTriangleListItemViewModel = null;
-            }
         }
     }
 }

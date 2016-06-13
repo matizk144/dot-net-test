@@ -34,11 +34,15 @@ namespace ShapeTests.ViewModel.ViewModels.Shapes
             }
         }
 
-        protected override void UpdateViewModel()
+        public override void UpdateViewModel()
         {
             base.UpdateViewModel();
             Length = Shape.Length;
             Width = Shape.Width;
+        }
+
+        public RectangleViewModel(Rectangle shape) : base(shape)
+        {
         }
     }
 }

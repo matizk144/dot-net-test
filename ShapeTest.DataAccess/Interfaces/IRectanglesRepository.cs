@@ -8,11 +8,12 @@ namespace ShapeTest.DataAccess.Interfaces
     public interface IRectanglesRepository
     {
         event EventHandler<RectangleEventArgs> RectangleAdded;
+        event EventHandler<RectangleEventArgs> RectangleRemoved;
 
         List<Rectangle> GetAll();
 
         void Add(Rectangle circle);
 
-        bool Remove(Rectangle circle);
+        void Remove(Rectangle circle);
     }
 }

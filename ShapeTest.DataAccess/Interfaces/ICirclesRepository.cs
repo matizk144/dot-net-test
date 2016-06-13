@@ -8,11 +8,12 @@ namespace ShapeTest.DataAccess.Interfaces
     public interface ICirclesRepository
     {
         event EventHandler<CircleEventArgs> CircleAdded;
+        event EventHandler<CircleEventArgs> CircleRemoved;
 
         List<Circle> GetAll();
 
         void Add(Circle circle);
 
-        bool Remove(Circle circle);
+        void Remove(Circle circle);
     }
 }

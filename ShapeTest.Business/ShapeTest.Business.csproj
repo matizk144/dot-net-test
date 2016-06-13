@@ -47,7 +47,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ComputeAreaService.cs" />
     <Compile Include="Services\IComputeAreaService.cs" />
+    <Compile Include="Services\IShapeRemover.cs" />
     <Compile Include="Services\IShapesCreator.cs" />
+    <Compile Include="Services\ShapeRemover.cs" />
     <Compile Include="Services\ShapesCreator.cs" />
   </ItemGroup>
   <ItemGroup>

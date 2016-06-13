@@ -8,11 +8,12 @@ namespace ShapeTest.DataAccess.Interfaces
     public interface ITrianglesRepository
     {
         event EventHandler<TriangleEventArgs> TriangleAdded;
+        event EventHandler<TriangleEventArgs> TriangleRemoved;
 
         List<Triangle> GetAll();
 
         void Add(Triangle triangle);
 
-        bool Remove(Triangle triangle);
+        void Remove(Triangle triangle);
     }
 }

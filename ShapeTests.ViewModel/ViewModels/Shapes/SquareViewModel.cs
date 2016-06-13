@@ -23,10 +23,14 @@ namespace ShapeTests.ViewModel.ViewModels.Shapes
             }
         }
 
-        protected override void UpdateViewModel()
+        public override void UpdateViewModel()
         {
             base.UpdateViewModel();
             Side = Shape.Side;
+        }
+
+        public SquareViewModel(Square shape) : base(shape)
+        {
         }
     }
 }

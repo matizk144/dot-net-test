@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using ShapeTest.DataAccess.Entities;
 using ShapeTest.DataAccess.Entities.Base;
 
 namespace ShapeTests.ViewModel.ViewModels.Shapes.Base
 {
-    public abstract class BaseShapeViewModel<TShape> : ViewModel where TShape : BaseShape
+    public abstract class BaseShapeViewModel<TShape> : ViewModel, IShapeViewModel where TShape : BaseShape
     {
         private string _name;
         private TShape _shape;
@@ -26,6 +25,11 @@ namespace ShapeTests.ViewModel.ViewModels.Shapes.Base
             {
                 SetAndUpdateTraingleIfChanged(value);
             }
+        }
+
+        protected BaseShapeViewModel(TShape shape)
+        {
+            _shape = shape;
         }
 
         public override void RaisePropertyChanged(PropertyChangedEventArgs changedArgs)
@@ -62,9 +66,11 @@ namespace ShapeTests.ViewModel.ViewModels.Shapes.Base
             UpdateViewModel();
         }
 
-        protected virtual void UpdateViewModel()
+        public virtual void UpdateViewModel()
         {
             Name = Shape.Name;
         }
+
+        public BaseShape BaseShape => Shape;
     }
 }

@@ -23,14 +23,13 @@ namespace ShapeTest.DataAccess.Repositories.BaseRepository
             OnEntityAdded(entity);
         }
 
-        public bool Remove(TEntity entity)
+        public void Remove(TEntity entity)
         {
-            var removeStatus =  Entities.Remove(entity);
-            OnEntityRemoved(entity, removeStatus);
-            return removeStatus;
+            Entities.Remove(entity);
+            OnEntityRemoved(entity);
         }
 
-        protected abstract bool OnEntityRemoved(TEntity entity, bool isRemoved);
+        protected abstract void OnEntityRemoved(TEntity entity);
 
         protected abstract void OnEntityAdded(TEntity entity);
     }

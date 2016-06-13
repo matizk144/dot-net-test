@@ -23,10 +23,14 @@ namespace ShapeTests.ViewModel.ViewModels.Shapes
             }
         }
 
-        protected override void UpdateViewModel()
+        public override void UpdateViewModel()
         {
             base.UpdateViewModel();
             Radius = Shape.Radius;
+        }
+
+        public CircleViewModel(Circle shape) : base(shape)
+        {
         }
     }
 }
