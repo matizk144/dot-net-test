@@ -38,7 +38,7 @@ namespace ShapeTests.ViewModel.ViewModels.Shapes
 
         protected override void UpdateViewModel()
         {
-            
+            base.UpdateViewModel();
             Base = Shape.Base;
             Height = Shape.Height;
         }
