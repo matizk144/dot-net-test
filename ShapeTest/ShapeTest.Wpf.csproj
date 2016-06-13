@@ -99,6 +99,18 @@
     <Compile Include="Views\ShapesView.xaml.cs">
       <DependentUpon>ShapesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shapes\RectangleView.xaml.cs">
+      <DependentUpon>RectangleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shapes\CircleView.xaml.cs">
+      <DependentUpon>CircleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shapes\SquareView.xaml.cs">
+      <DependentUpon>SquareView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shapes\TriangleView.xaml.cs">
+      <DependentUpon>TriangleView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +132,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShapesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Shapes\RectangleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Shapes\CircleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Shapes\SquareView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Shapes\TriangleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
